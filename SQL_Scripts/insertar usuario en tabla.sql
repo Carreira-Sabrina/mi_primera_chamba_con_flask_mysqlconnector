@@ -1,0 +1,1 @@
+INSERT INTO usuarios(nombre,email,password) VALUES("Optimus Prime", "optimus@allspark.com","beautifulElita");

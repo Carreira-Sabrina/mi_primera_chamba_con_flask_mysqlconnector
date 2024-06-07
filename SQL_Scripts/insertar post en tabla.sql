@@ -1,0 +1,1 @@
+INSERT INTO posts (id_usuario,titulo,texto) VALUES (1,"Recibi una carta de Elita","El dia de hoy recibi una carta de Elita desde Cybertron. Me alegra saber que esta muy bien")

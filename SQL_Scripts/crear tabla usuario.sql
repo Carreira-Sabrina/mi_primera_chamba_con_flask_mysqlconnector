@@ -1,0 +1,7 @@
+CREATE TABLE usuarios (
+id_usuario INT NOT NULL AUTO_INCREMENT,
+nombre VARCHAR(20) NOT NULL UNIQUE,
+email VARCHAR(125) NOT NULL UNIQUE,
+password  VARCHAR(20) NOT NULL,
+PRIMARY KEY (id_usuario)
+)

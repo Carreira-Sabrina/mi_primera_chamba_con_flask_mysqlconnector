@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+{%include "header.html"%}
+
+{%block titulo%}Salseo en Cybertron !{%endblock%}
+
+{%block contenedor_general%}
+    {%block header_navbar_%}
+    {%endblock%}
+    <h1> Bienvenidos a nuestro blog Salseo en Cybertron </h1>
+    {% for post in posts%}
+        <div class="post-card">
+            <h3 class="post title">{{post[2]}} escrito por {{post[1]}}</h3>
+            <p>Post creado el: {{post[4]}}</p>
+            <p>{{post[3]}}</p>
+
+        </div>
+
+    {%endfor%}
+{%endblock%}
