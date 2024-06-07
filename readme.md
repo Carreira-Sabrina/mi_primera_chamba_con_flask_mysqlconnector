@@ -19,8 +19,4 @@
 desde Administration/MANAGEMENT/Data Import/Restore
 
 -Los parámetros de mi conexion están en el archivo *config_base_datos.py*, tus parámetros de conexión (especialmente el password)
-<<<<<<< HEAD
 podrían cambiar
-=======
-podrían cambiar
->>>>>>> d47f7aaf9075a6aa8d4a594174fb18aafcf3f19c
