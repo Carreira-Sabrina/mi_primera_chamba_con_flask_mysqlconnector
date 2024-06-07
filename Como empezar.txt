@@ -17,3 +17,7 @@ la opción con el nombre del entorno virtual creado en el paso 1
 - Para guardar las dependencias en el archivo requierements.txt (el archivo se crea y se escribe al ejecutar el comando)
 
     pip freeze > requierements.txt
+
+- COMO CLONAR ESTE REPOSITORIO !!
+========================================
+ver el readme.md
