@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="{{ url_for("static",filename="estilos.css")}}">
 </head>
 <body>
-    {%block contenedor_general%}
+    
         <div class="contenedor-general">
-            
+            {%block contenedor_general%}
+            {%endblock%}
         </div>
-    {%endblock%}
+    
     
 </body>
 </html>

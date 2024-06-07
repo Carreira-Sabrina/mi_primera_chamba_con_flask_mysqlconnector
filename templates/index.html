@@ -7,13 +7,14 @@
     {%block header_navbar_%}
     {%endblock%}
     <h1> Bienvenidos a nuestro blog Salseo en Cybertron </h1>
-    {% for post in posts%}
-        <div class="post-card">
-            <h3 class="post title">{{post[2]}} escrito por {{post[1]}}</h3>
-            <p>Post creado el: {{post[4]}}</p>
-            <p>{{post[3]}}</p>
-
-        </div>
-
-    {%endfor%}
+    <div class="post-container">
+        {% for post in posts%}
+            <div class="post-card">
+                <h3 class="post-titulo">{{post[2]}} escrito por {{post[1]}}</h3>
+                <p class="post-fecha">Post creado el: {{post[4]}}</p>
+                <p class="post-texto">{{post[3]}}</p>
+            </div>
+        {%endfor%}    
+    </div>
+    
 {%endblock%}

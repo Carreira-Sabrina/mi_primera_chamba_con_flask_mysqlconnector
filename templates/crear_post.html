@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+{%include "header.html"%}
+
+{%block titulo%}Crear un nuevo post{%endblock%}
+
+{%block contenedor_general%}
+    {%block header_navbar_%}
+    {%endblock%}
+    
+    <h1>Crea tu nuevo post aquí !</h1>
+    <form action="/post_creado" method="POST">
+        <div>
+            <label for="/post_creado">Elige el usuario</label>
+            <select name="seleccion-usuario-post" id="seleccion-usuario-post"> 
+                {% for usuarios in datosUsuarios%}
+                    <option value={{usuarios[0]}}>{{usuarios[1]}}</option>
+                {%endfor%}   
+            </select>
+        </div>
+        <div>
+            <label for="">Título del Post</label>
+            <input type="text" name="titulo-post" id="titulo-post">    
+        </div>
+        <div>
+            <label for="">Texto del Post</label>
+            <textarea name="texto-post" id="texto-post"></textarea>
+        </div>
+        <input type="submit" value="Crear nuevo post">
+    </form>
+    
+{%endblock%}
