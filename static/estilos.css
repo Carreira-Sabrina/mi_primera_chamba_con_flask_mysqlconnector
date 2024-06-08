@@ -41,7 +41,7 @@ h1{
     font-size: 3rem;
     font-weight: bolder;
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* POSTS */
@@ -50,8 +50,69 @@ h1{
 }
 .post-card{
     border: 1px solid black;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .post-titulo{
     font-style: italic;
+}
+
+.post-bnt-acciones{
+    display: inline-block;
+    font-size: 1.5rem;
+    color:ghostwhite;
+    padding: 14px 20px;
+}
+
+.post-bnt-acciones.editar{
+    background-color: teal;
+}
+
+.post-bnt-acciones.eliminar{
+    background-color: crimson;
+}
+
+/*AGREGAR POSTS*/
+.form-agregar-post{
+    padding: 1.5rem;
+}
+
+.form-agregar-post label,select,input[type="text"]{
+    font-size: 1.5rem;
+}
+
+
+.form-agregar-post input[type="submit"]{
+    font-size: 1.5rem;
+    background-color: deeppink;
+    color: whitesmoke;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: none;
+    transition: 0.3s;
+}
+
+.form-agregar-post input[type="submit"]:hover{
+    color:deeppink;
+    background-color: whitesmoke;
+}
+
+.fila-form-agregar-post{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    justify-items: space-around;
+    gap:1rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.form-agregar-post textarea{
+    min-width: 300px;
+    min-height: 150px;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border: 4px solid deeppink;
 }

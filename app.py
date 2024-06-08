@@ -18,7 +18,6 @@ def get_posts():
     consulta = ("SELECT posts.id_post,usuarios.nombre,posts.titulo,posts.texto,posts.fecha FROM posts INNER JOIN usuarios ON posts.id_usuario = usuarios.id_usuario")
     cursor_base_de_datos.execute(consulta)
     resultado_consulta = cursor_base_de_datos.fetchall()
-        
     return resultado_consulta
 
 
@@ -28,10 +27,20 @@ def get_users_id_and_name():
     consulta_usuarios= ("SELECT id_usuario,nombre FROM usuarios ORDER BY id_usuario")
     cursor_base_de_datos.execute(consulta_usuarios)
     resultado_consulta_usuarios = cursor_base_de_datos.fetchall()
-    print(resultado_consulta_usuarios)
     return resultado_consulta_usuarios
 
-
+#ESTA FUNCION RECUPERA UN SOLO POST (SE USA POR EJEMPLO PARA EL EDIT)
+def get_one_post(id):
+    #Obtiene el titulo y el texto de un post a partir de un id para enviar a ser editado
+    consulta_titulo_texto_post = ("SELECT titulo,texto FROM posts WHERE id_post = %s")
+    #Los datos de las consultas parametrizadas tienen que ir en tuplas
+    #SI, ASI DE FEO, SI NO PONGO LA COMA AL FINAL NO LO TOMA COMO TUPLA !!!
+    parametros_consulta = (id,)
+    cursor_base_de_datos.execute(consulta_titulo_texto_post,parametros_consulta)
+    resultado_consulta_post = cursor_base_de_datos.fetchone()
+    print("**** Recuperando datos del post")
+    print(resultado_consulta_post)
+    return resultado_consulta_post
 
 # ________________ Rutas ___________________
 
@@ -69,7 +78,38 @@ def guardar_post_en_BD():
         print("Faltan datos para crear un post guardar")
 
     #DESPUES DE CREAR UN POST SE REDIRECCIONA AL INDEX, SI YA SE, FALTA ALGO DE FEEDBACK AL USUARIO
+    #CUIDADO, INDEX ESTÁ ESPERANDO DATOS !!!!!
     return redirect(url_for("index"))
+
+
+
+@aplicacion.route("/editar_post/<int:id>",methods=["GET","POST"])
+def editar_post(id):
+    #Se obtienen los datos a editar (titulo y texto del post)
+    
+    if request.method == "POST":
+        nuevo_titulo_post = request.form["titulo_post"]    
+        nuevo_texto_post = request.form["texto_post"]    
+        #Al pulsar el boton enviar... si hay datos...hago el update
+        if nuevo_titulo_post and nuevo_texto_post:
+            sql_actualizar_post = ("UPDATE post SET tiulo=%s,texto=%s WHERE id_post=%s")
+            parametros_consulta = (nuevo_titulo_post,nuevo_texto_post,id)
+            cursor_base_de_datos.execute(sql_actualizar_post,parametros_consulta)
+            base_de_datos.commit()
+            #ACA HAY UN TEMITA, INDEX ESTA ESPERANDO DATOS ! 
+            posts_en_bd = get_posts()
+                    
+            return redirect (url_for("index",posts = posts_en_bd))
+        else:
+            print("FALTAN DATOS PARA ACTUALIZAR EL POST")
+    else:
+        contenido_a_editar = get_one_post(id)
+        print("==============CONTENIDO A EDITAR en index 0 =========")
+        print(contenido_a_editar[0])
+        print("==============CONTENIDO A EDITAR en index 1 =========")
+        print(contenido_a_editar[1])
+        return render_template("update_post.html", contenido_a_editar=contenido_a_editar)
+
 
 if __name__ in "__main__":
     aplicacion.run(debug=True)

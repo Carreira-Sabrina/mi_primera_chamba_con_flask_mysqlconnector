@@ -8,8 +8,8 @@
     {%endblock%}
     
     <h1>Crea tu nuevo post aquí !</h1>
-    <form action="/post_creado" method="POST">
-        <div>
+    <form  class="form-agregar-post" action="/post_creado" method="POST">
+        <div class="fila-form-agregar-post">
             <label for="/post_creado">Elige el usuario</label>
             <select name="seleccion-usuario-post" id="seleccion-usuario-post"> 
                 {% for usuarios in datosUsuarios%}
@@ -17,11 +17,11 @@
                 {%endfor%}   
             </select>
         </div>
-        <div>
+        <div class="fila-form-agregar-post">
             <label for="">Título del Post</label>
             <input type="text" name="titulo-post" id="titulo-post">    
         </div>
-        <div>
+        <div class="fila-form-agregar-post">
             <label for="">Texto del Post</label>
             <textarea name="texto-post" id="texto-post"></textarea>
         </div>

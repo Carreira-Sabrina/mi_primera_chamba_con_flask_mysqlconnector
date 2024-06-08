@@ -13,7 +13,10 @@
                 <h3 class="post-titulo">{{post[2]}} escrito por {{post[1]}}</h3>
                 <p class="post-fecha">Post creado el: {{post[4]}}</p>
                 <p class="post-texto">{{post[3]}}</p>
+                <a class="post-bnt-acciones editar" href="{{url_for('editar_post', id=post[0])}}">Editar post</a>
+                <a class="post-bnt-acciones eliminar" href="">Eliminar post</a>
             </div>
+
         {%endfor%}    
     </div>
     
