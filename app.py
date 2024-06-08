@@ -79,7 +79,9 @@ def guardar_post_en_BD():
 
     #DESPUES DE CREAR UN POST SE REDIRECCIONA AL INDEX, SI YA SE, FALTA ALGO DE FEEDBACK AL USUARIO
     #CUIDADO, INDEX ESTÁ ESPERANDO DATOS !!!!!
-    return redirect(url_for("index"))
+    #ACA HAY UN TEMITA, INDEX ESTA ESPERANDO DATOS ! 
+    posts_en_bd = get_posts()
+    return redirect(url_for("index",posts = posts_en_bd))
 
 
 
@@ -92,7 +94,7 @@ def editar_post(id):
         nuevo_texto_post = request.form["texto_post"]    
         #Al pulsar el boton enviar... si hay datos...hago el update
         if nuevo_titulo_post and nuevo_texto_post:
-            sql_actualizar_post = ("UPDATE post SET tiulo=%s,texto=%s WHERE id_post=%s")
+            sql_actualizar_post = ("UPDATE posts SET titulo=%s,texto=%s WHERE id_post=%s")
             parametros_consulta = (nuevo_titulo_post,nuevo_texto_post,id)
             cursor_base_de_datos.execute(sql_actualizar_post,parametros_consulta)
             base_de_datos.commit()

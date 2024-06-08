@@ -11,12 +11,12 @@
     <h1>Bot o Con, edita tu post aquí !</h1>
     <form  class="form-agregar-post" action="" method="POST">
         <div class="fila-form-agregar-post">
-            <label for="">Título del Post</label>
-            <input type="text" name="titulo-post" id="titulo-post" value={{contenido_a_editar[0]}}>    
+            <label for="titulo_post">Título del Post</label>
+            <input type="text" name="titulo_post" id="titulo_post" placeholder={{contenido_a_editar[0]}}>    
         </div>
         <div class="fila-form-agregar-post">
-            <label for="">Texto del Post</label>
-            <textarea name="texto-post" id="texto-post" placeholder={{contenido_a_editar[1]}}></textarea>
+            <label for="texto_post">Texto del Post</label>
+            <textarea name="texto_post" id="texto_post" placeholder={{contenido_a_editar[1]}}></textarea>
         </div>
         <input type="submit" value="Terminar Edición del Post">
     </form>
